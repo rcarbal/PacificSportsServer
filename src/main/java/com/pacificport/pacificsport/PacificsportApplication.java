@@ -14,12 +14,3 @@ public class PacificsportApplication {
 	}
 }
 
-@RestController
-class HelloController {
-	@GetMapping("/")
-	String home() {
-		return "Hello World!";
-	}	
-
-}
-
