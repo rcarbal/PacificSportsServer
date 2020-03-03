@@ -1,11 +1,13 @@
-package com.pacificport.pacificsport.dao;
+package com.pacificport.pacificsport.dao.cut;
 import com.pacificport.pacificsport.bean.json.JSONProcessor;
+import org.json.simple.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Repository;
 
 
 
-@Repository
+@Component
 public class CutDAOJSONImpl implements CutJSONDAO {
 
     @Autowired
@@ -15,7 +17,7 @@ public class CutDAOJSONImpl implements CutJSONDAO {
     }
 
     @Override
-    public String findAll() {
+    public JSONObject findAll() {
       return jsonProcessor.getAll();
     }
 }

@@ -14,7 +14,7 @@ public class JSONProcessorImpl implements JSONProcessor{
     private final String PATH = "src/main/resources/json/pacificsport.json";
 
     @Override
-    public String getAll() {
+    public JSONObject getAll() {
         JSONParser jsonParser = new JSONParser();
         JSONObject jsonObject = null;
 
@@ -31,6 +31,6 @@ public class JSONProcessorImpl implements JSONProcessor{
         if (jsonObject == null){
             return null;
         }
-        return jsonObject.toJSONString();
+        return jsonObject;
     }
 }

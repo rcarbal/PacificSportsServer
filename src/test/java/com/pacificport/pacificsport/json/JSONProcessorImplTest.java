@@ -1,6 +1,7 @@
 package com.pacificport.pacificsport.json;
 
 import com.pacificport.pacificsport.bean.json.JSONProcessorImpl;
+import org.json.simple.JSONObject;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,12 +16,12 @@ class JSONProcessorImplTest {
         JSONProcessorImpl jsonProcessor = new JSONProcessorImpl();
 
         //read all the data from JSON file
-        String allTheJsonInTheFile = jsonProcessor.getAll();
+        JSONObject allTheJsonInTheFile = jsonProcessor.getAll();
 
         System.out.println("\n\n========>>>>>");
         System.out.println(allTheJsonInTheFile);
 
-        Assertions.assertTrue(allTheJsonInTheFile.length() > 3);
+        Assertions.assertTrue(allTheJsonInTheFile.size() > 3);
     }
 
 }

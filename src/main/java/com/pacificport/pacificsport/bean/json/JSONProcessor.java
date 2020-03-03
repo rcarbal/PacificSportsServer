@@ -1,6 +1,8 @@
 package com.pacificport.pacificsport.bean.json;
 
+import org.json.simple.JSONObject;
+
 public interface JSONProcessor {
 
-    public String getAll();
+    public JSONObject getAll();
 }

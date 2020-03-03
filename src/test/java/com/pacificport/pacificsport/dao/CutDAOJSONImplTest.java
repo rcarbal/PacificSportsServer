@@ -1,16 +1,11 @@
 package com.pacificport.pacificsport.dao;
+import com.pacificport.pacificsport.dao.cut.CutDAOJSONImpl;
+import org.json.simple.JSONObject;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.ApplicationContext;
-
-import static org.junit.jupiter.api.Assertions.*;
 
 
 class CutDAOJSONImplTest {
-
-    @Autowired
-    private ApplicationContext context;
 
 
     // ********************************  THIS TEST CURRENTLY FAILS *******************************************
@@ -19,12 +14,12 @@ class CutDAOJSONImplTest {
 
         CutDAOJSONImpl impl = new CutDAOJSONImpl();
 
-        String cuts = impl.findAll();
+        JSONObject cuts = impl.findAll();
         if (cuts == null){
             Assertions.fail();
         }
         System.out.println("\n\n ==================>");
         System.out.println(cuts);
-        Assertions.assertTrue(cuts.length() > 0);
+        Assertions.assertTrue(cuts.size() > 0);
     }
 }
