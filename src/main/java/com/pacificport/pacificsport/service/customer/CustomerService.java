@@ -11,4 +11,6 @@ public interface CustomerService {
     public Customer findOne(int id);
 
     public Customer save(Customer customer);
+
+    public Customer deleteById(int id);
 }

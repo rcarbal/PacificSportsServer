@@ -5,6 +5,7 @@ import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 
 @Component
@@ -57,6 +58,20 @@ public class CustomerDAOImpl implements CustomerDAO{
     public Customer findOne(int id) {
         for (Customer customer: customers){
             if (customer.getId() == id){
+                return customer;
+            }
+        }
+        return null;
+    }
+
+    @Override
+    public Customer deleteById(int id) {
+        Iterator<Customer> iterator = customers.iterator();
+
+        while (iterator.hasNext()){
+            Customer customer = iterator.next();
+            if (customer.getId() == id){
+                iterator.remove();
                 return customer;
             }
         }

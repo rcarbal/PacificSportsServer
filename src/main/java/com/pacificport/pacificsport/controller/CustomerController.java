@@ -37,6 +37,15 @@ public class CustomerController {
         return null;
     }
 
+    @DeleteMapping("/customers/{id}")
+    public void deleteCustomer(@PathVariable int id){
+
+        Customer customer = service.deleteById(id);
+        if (customer == null){
+            throw new UserNotFoundException("id-" + id);
+        }
+    }
+
     @PostMapping("/customers")
     public ResponseEntity<Object> createCustomer(@RequestBody Customer customer){
         Customer cust = service.save(customer);

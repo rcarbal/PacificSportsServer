@@ -12,4 +12,6 @@ public interface CustomerDAO {
 
     public Customer findOne(int i);
 
+    public Customer deleteById(int id);
+
 }
