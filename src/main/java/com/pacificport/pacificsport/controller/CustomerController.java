@@ -1,6 +1,7 @@
 package com.pacificport.pacificsport.controller;
 
 import com.pacificport.pacificsport.bean.customer.Customer;
+import com.pacificport.pacificsport.exceptions.UserNotFoundException;
 import com.pacificport.pacificsport.service.customer.CustomerService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -27,7 +28,13 @@ public class CustomerController {
 
     @GetMapping("/customers/{id}")
     public Customer retrieveCustomer(@PathVariable int id){
-        return service.findOne(id);
+
+        Customer customer = service.findOne(id);
+        if (customer == null){
+            throw new UserNotFoundException("id-" + id);
+        }
+
+        return null;
     }
 
     @PostMapping("/customers")
