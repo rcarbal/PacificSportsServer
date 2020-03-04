@@ -1,4 +1,4 @@
-package com.pacificport.pacificsport.service;
+package com.pacificport.pacificsport.service.cut;
 
 import com.pacificport.pacificsport.dao.cut.CutJSONDAO;
 import org.json.simple.JSONObject;

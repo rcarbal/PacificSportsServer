@@ -1,6 +1,6 @@
 package com.pacificport.pacificsport.controller;
 
-import com.pacificport.pacificsport.service.CutJSONService;
+import com.pacificport.pacificsport.service.cut.CutJSONService;
 import org.json.simple.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
