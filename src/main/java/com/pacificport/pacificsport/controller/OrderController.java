@@ -3,24 +3,23 @@ package com.pacificport.pacificsport.controller;
 import com.pacificport.pacificsport.service.cut.CutJSONService;
 import org.json.simple.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.MessageSource;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestHeader;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
 
 import javax.annotation.PostConstruct;
 import java.util.Date;
+import java.util.Locale;
 
 @Controller
 public class OrderController {
 
+    @Autowired
     private CutJSONService cutService;
 
-    @Autowired
-    public OrderController(CutJSONService cutService) {
-        System.out.println("==============>>>>> running @Autowired on constructor for " + getClass());
-        this.cutService = cutService;
+    public OrderController() {
     }
 
     @PostConstruct
@@ -31,6 +30,7 @@ public class OrderController {
     @RequestMapping("/orderform")
     public String getOrderForm(Model theModel){
         JSONObject cuts = cutService.findAll();
+
         theModel.addAttribute("theCuts", cuts);
         theModel.addAttribute("theDate", new Date());
         return "orderform";
