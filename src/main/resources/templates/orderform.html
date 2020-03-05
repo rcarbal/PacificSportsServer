@@ -4,13 +4,32 @@
 
 <head>
     <title>Order Form</title>
+    <!-- reference css file in the static/css location   -->
+    <link rel="stylesheet" th:href="@{/css/demo.css}">
 </head>
 
 
-<body>
-<h1>Pacific Sports Order Form</h1>
 
-<p th:text="'Time on the server is ' + ${theDate}"/>
+<body>
+    <h1>Pacific Sports Order Form</h1>
+
+    <table border="1">
+        <thead>
+
+        </thead>
+            <tr>
+                <th>Cut</th>
+                <th>Description</th>
+            </tr>
+        <tbody>
+            <tr th:each="tempCuts: ${theCuts}">
+                <td th:text="${tempCuts}"/>
+
+            </tr>
+        </tbody>
+    </table>
+
+    <p th:text="'Time on the server is ' + ${theDate}" class="funny"/>
 </body>
 
 </html>

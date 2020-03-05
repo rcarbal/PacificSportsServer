@@ -7,6 +7,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import javax.annotation.PostConstruct;
+
 @RestController
 @RequestMapping("/json")
 public class DatabaseJsonController {
@@ -17,6 +19,7 @@ public class DatabaseJsonController {
     public DatabaseJsonController(CutJSONService cutService) {
         this.cutService = cutService;
     }
+
     @GetMapping("/cuts")
     public JSONObject findAll(){
         return cutService.findAll();
