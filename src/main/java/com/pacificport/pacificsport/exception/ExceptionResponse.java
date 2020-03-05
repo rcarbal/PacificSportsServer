@@ -1,4 +1,4 @@
-package com.pacificport.pacificsport.exceptions;
+package com.pacificport.pacificsport.exception;
 
 import java.util.Date;
 

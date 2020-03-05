@@ -1,7 +1,7 @@
 package com.pacificport.pacificsport.controller;
 
 import com.pacificport.pacificsport.bean.customer.Customer;
-import com.pacificport.pacificsport.exceptions.UserNotFoundException;
+import com.pacificport.pacificsport.exception.UserNotFoundException;
 import com.pacificport.pacificsport.service.customer.CustomerService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.hateoas.EntityModel;
