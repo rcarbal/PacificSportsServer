@@ -4,9 +4,11 @@ import com.pacificport.pacificsport.bean.customer.Customer;
 import com.pacificport.pacificsport.exceptions.UserNotFoundException;
 import com.pacificport.pacificsport.service.customer.CustomerService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.hateoas.EntityModel;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
+
 
 import java.net.URI;
 import java.util.List;
@@ -33,6 +35,10 @@ public class CustomerController {
         if (customer == null){
             throw new UserNotFoundException("id-" + id);
         }
+
+        // returns a link to all the users in the database
+        EntityModel<Customer> resource = new EntityModel<>(customer);
+
 
         return null;
     }
@@ -63,7 +69,4 @@ public class CustomerController {
         // pass in the location uri into created()
         return ResponseEntity.created(location).build();
     }
-
-
-
 }
