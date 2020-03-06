@@ -4,27 +4,28 @@ import java.util.List;
 
 public class Cut {
 
-    private String type;
-    private Integer number;
+    private String number;
     private String description;
-    private List<Color> colors;
+    private String color;
+    private String size;
+    private int quantity;
 
     public Cut() {
     }
 
-    public String getType() {
-        return type;
+    public Cut(String number, String description, String color, String size, int quantity) {
+        this.number = number;
+        this.description = description;
+        this.color = color;
+        this.size = size;
+        this.quantity = quantity;
     }
 
-    public void setType(String type) {
-        this.type = type;
-    }
-
-    public Integer getNumber() {
+    public String getNumber() {
         return number;
     }
 
-    public void setNumber(Integer number) {
+    public void setNumber(String number) {
         this.number = number;
     }
 
@@ -36,21 +37,38 @@ public class Cut {
         this.description = description;
     }
 
-    public List<Color> getColors() {
-        return colors;
+    public String getColor() {
+        return color;
     }
 
-    public void setColors(List<Color> colors) {
-        this.colors = colors;
+    public void setColor(String color) {
+        this.color = color;
+    }
+
+    public String getSize() {
+        return size;
+    }
+
+    public void setSize(String size) {
+        this.size = size;
+    }
+
+    public int getQuantity() {
+        return quantity;
+    }
+
+    public void setQuantity(int quantity) {
+        this.quantity = quantity;
     }
 
     @Override
     public String toString() {
         return "Cut{" +
-                "type='" + type + '\'' +
-                ", number=" + number +
+                "number='" + number + '\'' +
                 ", description='" + description + '\'' +
-                ", colors=" + colors +
+                ", color='" + color + '\'' +
+                ", size='" + size + '\'' +
+                ", quantity=" + quantity +
                 '}';
     }
 }

@@ -26,9 +26,9 @@
         <p class="h4 mb-4">Create Order</p>
 
         <form th:action="@{order/save}"
-               th:object="${order}" method="POST">
+               th:object="${cut}" method="POST">
 
-            <input type="text" th:field="*{cut}"
+            <input type="text" th:field="*{number}"
                    class="form-controlmb-4 col-4" placeholder="Item">
 
             <input type="text" th:field="*{color}"
@@ -42,7 +42,12 @@
             <input type="text" th:field="*{quantity}"
                    class="form-controlmb-4 col-4" placeholder="Quantity">
 
+            <button type="submit" class="btn btn-info col-2">Add</button>
+
         </form>
+
+        <hr>
+        <a th:href="@{/}">Back to nowhere</a>
 
         <table border="1">
             <thead>

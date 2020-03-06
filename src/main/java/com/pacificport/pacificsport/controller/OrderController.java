@@ -1,5 +1,6 @@
 package com.pacificport.pacificsport.controller;
 
+import com.pacificport.pacificsport.bean.Cut;
 import com.pacificport.pacificsport.service.cut.CutJSONService;
 import org.json.simple.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -30,11 +31,19 @@ public class OrderController {
 
     @RequestMapping("/orderform")
     public String getOrderForm(Model theModel){
-        HashMap<String, JSONObject> cuts = cutService.findAll();
 
-        theModel.addAttribute("theCuts", cuts);
-        theModel.addAttribute("theDate", new Date());
+        // Create model to bind form data
+        Cut theCut = new Cut();
+
+        theModel.addAttribute("cut", theCut);
+
         return "order/orderform";
+    }
+
+    @RequestMapping("/order/save")
+    public void saveOrder(){
+
+        System.out.println();
     }
 
 }
