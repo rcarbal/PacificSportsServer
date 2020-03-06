@@ -1,5 +1,9 @@
 package com.pacificport.pacificsport.bean.customer;
 
+import io.swagger.annotations.ApiModel;
+import io.swagger.annotations.ApiModelProperty;
+
+@ApiModel(description="Customer that purchases form Pacific Sports")
 public class Customer {
     private Integer id;
     private String name;
@@ -8,6 +12,7 @@ public class Customer {
     private String city;
     private String state;
     private String zip;
+    @ApiModelProperty(notes="This is not required")
     private String phoneNumber;
 
     public Customer() {
