@@ -3,8 +3,8 @@ import com.pacificport.pacificsport.bean.json.JSONProcessor;
 import org.json.simple.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
-import org.springframework.stereotype.Repository;
 
+import java.util.HashMap;
 
 
 @Component
@@ -17,7 +17,12 @@ public class CutDAOJSONImpl implements CutJSONDAO {
     }
 
     @Override
-    public JSONObject findAll() {
+    public HashMap<String, JSONObject> findAll() {
       return jsonProcessor.getAll();
+    }
+
+    @Override
+    public JSONObject getCutNumber(String number) {
+        return jsonProcessor.getCutNumber(number);
     }
 }

@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import javax.annotation.PostConstruct;
 import java.util.Date;
+import java.util.HashMap;
 import java.util.Locale;
 
 @Controller
@@ -29,11 +30,11 @@ public class OrderController {
 
     @RequestMapping("/orderform")
     public String getOrderForm(Model theModel){
-        JSONObject cuts = cutService.findAll();
+        HashMap<String, JSONObject> cuts = cutService.findAll();
 
         theModel.addAttribute("theCuts", cuts);
         theModel.addAttribute("theDate", new Date());
-        return "orderform";
+        return "order/orderform";
     }
 
 }

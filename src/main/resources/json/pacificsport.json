@@ -1,5 +1,4 @@
-{
-  "adult": [
+ [
     {
       "number": 1210,
       "description": "Adult 22/1 Crew SS",
@@ -99,10 +98,4 @@
         "Sangria"
       ]
     }
-  ],
-  "juniors": [],
-  "performance": [],
-  "pfd": [],
-  "youth": [],
-  "toddler": []
-}
+  ]
