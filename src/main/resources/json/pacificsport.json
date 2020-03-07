@@ -1,7 +1,7 @@
  [
     {
       "number": 1210,
-      "description": "Adult 22/1 Crew SS",
+      "description": "Mens 22/1 Crew SS",
       "colors": [
         "Athletic Grey",
         "Black",
@@ -21,7 +21,7 @@
     },
     {
       "number": 1212,
-      "description": "Adult 22/1 Solid LS",
+      "description": "Mens 22/1 Solid LS",
       "colors": [
         "White",
         "Black",
@@ -33,7 +33,7 @@
     },
     {
       "number": 1230,
-      "description": "Adult Tri Crew SS",
+      "description": "Mens Tri Crew SS",
       "colors": [
         "Arctic Grey",
         "Asphalt",
@@ -69,7 +69,7 @@
     },
     {
       "number": 1232,
-      "description": "Adult Tri-Color HTR LS",
+      "description": "Mens Tri-Color HTR LS",
       "colors": [
         "Cranberry HTR",
         "Ocean Teal HTR",
@@ -81,8 +81,8 @@
       ]
     },
     {
-      "number": 1232,
-      "description": "Adult 22/1 Tri Tank Top",
+      "number": 1234,
+      "description": "Mens 22/1 Tri Tank Top",
       "colors": [
         "Arctic Grey",
         "Concrete",
@@ -97,5 +97,22 @@
         "Pepper",
         "Sangria"
       ]
-    }
+    },
+   {
+     "number": 1260,
+     "description": "Mens 22/1 Color HTR",
+     "colors": [
+       "HTR Grey HTr",
+       "Bright Orange HTR",
+       "Charcoal HTR",
+       "Excalibur HTR",
+       "Forest HTR",
+       "Honeydew HTR",
+       "Kelly HTR",
+       "Khaki HTR",
+       "Lavender HTR",
+       "Light Blue HTR",
+       "Mango HTR"
+     ]
+   }
   ]
