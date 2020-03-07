@@ -1,14 +1,17 @@
 package com.pacificport.pacificsport.bean.customer;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 
 @ApiModel(description="Customer that purchases form Pacific Sports")
+@JsonIgnoreProperties(value={"bankAccount"})
 public class Customer {
     private Integer id;
     private String name;
     private String address1;
-    private String address2;
+    // You can also use @JsonIgnore on top of the field you want the endpoint to ignore.
+    private String bankAccount;
     private String city;
     private String state;
     private String zip;
@@ -18,11 +21,11 @@ public class Customer {
     public Customer() {
     }
 
-    public Customer(Integer id, String name, String address1, String address2, String city, String state, String zip, String phoneNumber) {
+    public Customer(Integer id, String name, String address1, String bankAccount, String city, String state, String zip, String phoneNumber) {
         this.id = id;
         this.name = name;
         this.address1 = address1;
-        this.address2 = address2;
+        this.bankAccount = bankAccount;
         this.city = city;
         this.state = state;
         this.zip = zip;
@@ -53,12 +56,12 @@ public class Customer {
         this.address1 = address1;
     }
 
-    public String getAddress2() {
-        return address2;
+    public String getBankAccount() {
+        return bankAccount;
     }
 
-    public void setAddress2(String address2) {
-        this.address2 = address2;
+    public void setBankAccount(String bankAccount) {
+        this.bankAccount = bankAccount;
     }
 
     public String getCity() {
@@ -98,7 +101,7 @@ public class Customer {
         return "Customer{" +
                 "name='" + name + '\'' +
                 ", address1='" + address1 + '\'' +
-                ", address2='" + address2 + '\'' +
+                ", address2='" + bankAccount + '\'' +
                 ", city='" + city + '\'' +
                 ", state='" + state + '\'' +
                 ", zip='" + zip + '\'' +
