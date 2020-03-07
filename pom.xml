@@ -55,6 +55,13 @@
 			<artifactId>spring-data-rest-hal-browser</artifactId>
 		</dependency>
 
+<!--		SECURITY-->
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-security</artifactId>
+		</dependency>
+
+
 
 
 		<dependency>
