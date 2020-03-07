@@ -25,26 +25,39 @@
     <div class="container">
         <p class="h4 mb-4">Create Order</p>
 
-        <form th:action="@{order/save}"
-               th:object="${cut }" method="POST">
+<!--        Single input group-->
+        <div class="input-group">
+            <div class="input-group-prepend">
+                <span class="input-group-text" id="">Item</span>
+            </div>
+            <input type="text" class="form-control">
+            <input type="text" class="form-control">
+            <input type="text" class="form-control">
+            <input type="text" class="form-control">
+        </div>
+        <hr>
+        <div>
+            <form th:action="@{order/save}"
+                   th:object="${cut}" method="POST">
 
-            <input type="text" th:field="*{number}"
-                   class="form-controlmb-4 col-4" placeholder="Item">
+                <input type="text" th:field="*{number}"
+                       class="form-control mb-4 col-2" placeholder="Item">
 
-            <input type="text" th:field="*{color}"
-                   class="form-controlmb-4 col-4" placeholder="Color">
-
-
-            <input type="text" th:field="*{size}"
-                   class="form-controlmb-4 col-4" placeholder="Size">
+                <input type="text" th:field="*{color}"
+                       class="form-contro lmb-4 col-4" placeholder="Color">
 
 
-            <input type="text" th:field="*{quantity}"
-                   class="form-controlmb-4 col-4" placeholder="Quantity">
+                <input type="text" th:field="*{size}"
+                       class="form-control mb-4 col-4" placeholder="Size">
 
-            <button type="submit" class="btn btn-info col-2">Add</button>
 
-        </form>
+                <input type="text" th:field="*{quantity}"
+                       class="form-control mb-4 col-4" placeholder="Quantity">
+
+                <button type="submit" class="btn btn-info col-2">Add</button>
+
+            </form>
+        </div>
 
         <hr>
         <a th:href="@{/}">Back to nowhere</a>
@@ -70,6 +83,7 @@
 
 
     <p th:text="'Time on the server is ' + ${theDate}" class="funny"/>
+    <script type="text/javascript" th:src="@{/js/index.js}"></script>
 </body>
 
 </html>
