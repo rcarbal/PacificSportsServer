@@ -1,5 +1,8 @@
 package com.pacificport.pacificsport.controller;
 
+import com.fasterxml.jackson.databind.ser.FilterProvider;
+import com.fasterxml.jackson.databind.ser.impl.SimpleBeanPropertyFilter;
+import com.fasterxml.jackson.databind.ser.impl.SimpleFilterProvider;
 import com.pacificport.pacificsport.bean.customer.Customer;
 import com.pacificport.pacificsport.exception.UserNotFoundException;
 import com.pacificport.pacificsport.service.customer.CustomerService;
@@ -9,6 +12,7 @@ import org.springframework.hateoas.mvc.ControllerLinkBuilder;
 import static org.springframework.hateoas.mvc.ControllerLinkBuilder.linkTo;
 import static org.springframework.hateoas.mvc.ControllerLinkBuilder.methodOn;
 import org.springframework.http.ResponseEntity;
+import org.springframework.http.converter.json.MappingJacksonValue;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
@@ -25,12 +29,24 @@ public class CustomerController {
     }
 
     @GetMapping("/customers")
-    public List<Customer> retrieveAllCustomers(){
-        return service.findAll();
+    public MappingJacksonValue retrieveAllCustomers(){
+
+        List<Customer> customers = service.findAll();
+
+        // Add dynamic filtering to this call to ignore the Customers bank account number
+        SimpleBeanPropertyFilter filter = SimpleBeanPropertyFilter.filterOutAllExcept("name", "state", "phoneNumber");
+
+        FilterProvider filterProvider = new SimpleFilterProvider()
+                .addFilter("CustomerBeanFilter", filter);
+
+        MappingJacksonValue mapping = new MappingJacksonValue(customers);
+        mapping.setFilters(filterProvider);
+
+        return mapping;
     }
 
     @GetMapping("/customers/{id}")
-    public Resource<Customer> retrieveCustomer(@PathVariable int id){
+    public MappingJacksonValue retrieveCustomer(@PathVariable int id){
 
         Customer customer = service.findOne(id);
         if (customer == null){
@@ -42,8 +58,18 @@ public class CustomerController {
         ControllerLinkBuilder theLink = linkTo(methodOn(this.getClass()).retrieveAllCustomers());
         resource.add(theLink.withRel("the-customers"));
 
+        // Add dynamic filtering to this call to ignore the Customers bank account number
+        SimpleBeanPropertyFilter filter = SimpleBeanPropertyFilter.filterOutAllExcept("name", "state", "phoneNumber",
+                "bankAccount", "zip");
 
-        return resource;
+        FilterProvider filterProvider = new SimpleFilterProvider()
+                .addFilter("CustomerBeanFilter", filter);
+
+        MappingJacksonValue mapping = new MappingJacksonValue(customer);
+        mapping.setFilters(filterProvider);
+
+
+        return mapping;
     }
 
     @DeleteMapping("/customers/{id}")

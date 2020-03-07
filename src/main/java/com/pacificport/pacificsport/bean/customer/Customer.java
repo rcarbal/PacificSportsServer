@@ -1,16 +1,17 @@
 package com.pacificport.pacificsport.bean.customer;
 
+import com.fasterxml.jackson.annotation.JsonFilter;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 
 @ApiModel(description="Customer that purchases form Pacific Sports")
-@JsonIgnoreProperties(value={"bankAccount"})
+@JsonFilter("CustomerBeanFilter")
 public class Customer {
     private Integer id;
     private String name;
     private String address1;
-    // You can also use @JsonIgnore on top of the field you want the endpoint to ignore.
+
     private String bankAccount;
     private String city;
     private String state;
