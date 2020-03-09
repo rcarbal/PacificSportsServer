@@ -15,19 +15,19 @@ function enterPressed(){
 
       addNewInputToInputGroup();
   
+    }else {
+        testServer();
     }
   });
 }
 
-// <div class="input-group" id="main-input-group">
-  // <div class="input-group-prepend">
-  //     <span class="input-group-text" id="">Item</span>
-  // </div>
-  // <input type="text" class="form-control">
-  // <input type="text" class="form-control">
-  // <input type="text" class="form-control">
-  // <input type="text" class="form-control">
-// </div>"
+
+function testServer(){
+  console.log("Calling server for test");
+  axios.get("/test").then((response)=>{
+    console.log(response);
+  });
+}
 
 function addNewInputToInputGroup(){
 
