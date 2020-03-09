@@ -1,22 +1,47 @@
 let COUNT = 1;
+let tempNode = null;
+let tempParent = null;
+let userQuery = null;
+let responseData = null;
+let preview = null;
+
 enterPressed();
 
 
 function enterPressed(){
   let inputGroup = document.getElementById("main-input-group");
 
-  inputGroup.addEventListener("keyup", () => {
+  inputGroup.addEventListener("keyup", (data) => {
     // Number 13 is the "Enter" key on the keyboard
     if (event.keyCode === 13) {
       // Cancel the default action, if needed
       event.preventDefault();
       // Trigger the button element with a click
       console.log("Enter Key Pressed");
+    
 
       addNewInputToInputGroup();
   
     }else {
-        testServer();
+     
+      tempNode = data.srcElement;
+      tempParent = data.srcElement.parentNode;
+      userQuery = tempNode.value;
+      preview = tempParent.childNodes[3];
+
+      if (preview.hasChildNodes()){
+          preview.innerHTML = "";
+      }
+
+      
+      let array = userQuery.split(" ");
+
+      var isNum = /^\d+$/.test(array[0]);
+
+      if(isNum){
+        getCutsStringMatch(array[0]);
+      }
+       
     }
   });
 }
@@ -25,8 +50,31 @@ function enterPressed(){
 function testServer(){
   console.log("Calling server for test");
   axios.get("/test").then((response)=>{
-    console.log(response);
+
+
   });
+}
+
+function getCutsStringMatch(string){
+  axios.get("json/cuts/cuts/" + string).then((response)=>{
+    responseData = response.data
+    return response.data;
+  })
+  .then(addResponseToPreview);
+}
+
+function addResponseToPreview(response){
+    // append to preview
+    for (var property in response) {
+      if (response.hasOwnProperty(property)) {
+        let completeString = property + " " + response[property]["description"];
+        
+        let addToPreview = document.createElement("div");
+        addToPreview.innerHTML = completeString;
+         preview.appendChild(addToPreview);
+      }
+    }
+
 }
 
 function addNewInputToInputGroup(){
