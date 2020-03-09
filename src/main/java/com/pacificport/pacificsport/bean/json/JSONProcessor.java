@@ -1,12 +1,14 @@
 package com.pacificport.pacificsport.bean.json;
-
 import org.json.simple.JSONObject;
 
-import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 public interface JSONProcessor {
 
-    public HashMap getAll();
+    public Map<String, JSONObject> getAll();
 
     public JSONObject getCutNumber(String number);
+
+    public Map getCutNumbers(String cut);
 }

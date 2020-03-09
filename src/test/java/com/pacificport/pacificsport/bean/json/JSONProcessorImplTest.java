@@ -3,6 +3,9 @@ import org.json.simple.JSONObject;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
+import java.util.List;
+import java.util.Map;
+
 class JSONProcessorImplTest {
 
     @Test
@@ -15,6 +18,18 @@ class JSONProcessorImplTest {
         String  description = (String) jsonObject.get("description");
 
         Assertions.assertEquals("Adult 22/1 Crew SS", description);
+
+    }
+
+    @Test
+    public void getSimilarCuts(){
+        JSONProcessorImpl jsonService = new JSONProcessorImpl();
+
+        String getAllCuts = "12";
+
+        Map<String, JSONObject> allTheCuts = jsonService.getCutNumbers(getAllCuts);
+
+        Assertions.assertTrue(allTheCuts.size() > 0);
 
     }
 

@@ -2,11 +2,13 @@ package com.pacificport.pacificsport.dao.cut;
 
 import org.json.simple.JSONObject;
 
-import java.util.HashMap;
+import java.util.Map;
 
 public interface CutJSONDAO {
 
-    public HashMap<String, JSONObject> findAll();
+    public Map<String, JSONObject> findAll();
 
     JSONObject getCutNumber(String number);
+
+    Map getCutNumbers(String cut);
 }

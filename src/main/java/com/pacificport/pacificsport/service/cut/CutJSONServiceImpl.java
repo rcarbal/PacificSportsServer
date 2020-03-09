@@ -5,7 +5,7 @@ import org.json.simple.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.HashMap;
+import java.util.Map;
 
 @Service
 public class CutJSONServiceImpl implements CutJSONService {
@@ -18,7 +18,7 @@ public class CutJSONServiceImpl implements CutJSONService {
     }
 
     @Override
-    public HashMap<String, JSONObject> findAll() {
+    public Map<String, JSONObject> findAll() {
         return cutDAO.findAll();
     }
 

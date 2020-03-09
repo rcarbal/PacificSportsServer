@@ -9,14 +9,13 @@ import org.springframework.stereotype.Component;
 import javax.annotation.PostConstruct;
 import java.io.FileReader;
 import java.io.IOException;
-import java.util.HashMap;
+import java.util.*;
 
 @Component
 public class JSONProcessorImpl implements JSONProcessor{
 
-    private final String PATH = "src/main/resources/json/pacificsport.json";
-    private HashMap<String, JSONObject> cuts = new HashMap<>();
-
+    private static final String PATH = "src/main/resources/json/pacificsport.json";
+    private static TreeMap<String, JSONObject> cuts = new TreeMap<>();
 
     @PostConstruct
     private void init(){
@@ -42,7 +41,7 @@ public class JSONProcessorImpl implements JSONProcessor{
     }
 
     @Override
-    public HashMap<String, JSONObject> getAll() {
+    public Map<String, JSONObject> getAll() {
 
         if (cuts == null){
             return null;
@@ -52,8 +51,19 @@ public class JSONProcessorImpl implements JSONProcessor{
 
     @Override
     public JSONObject getCutNumber(String number) {
-
         JSONObject cutReturned = cuts.get(number);
         return cutReturned;
+    }
+
+    @Override
+    public Map<String, JSONObject> getCutNumbers(String cut) {
+
+        return getByPrefix(cuts, cut);
+    }
+
+    private static SortedMap<String, JSONObject> getByPrefix(
+            TreeMap<String, JSONObject> myMap,
+            String prefix ) {
+        return myMap.subMap( prefix, prefix + Character.MAX_VALUE );
     }
 }

@@ -2,11 +2,11 @@ package com.pacificport.pacificsport.service.cut;
 
 import org.json.simple.JSONObject;
 
-import java.util.HashMap;
+import java.util.Map;
 
 public interface CutJSONService {
 
-    public HashMap<String, JSONObject> findAll();
+    public Map<String, JSONObject> findAll();
 
     public JSONObject getCutNumber(String number);
 }
