@@ -9,4 +9,6 @@ public interface CutJSONService {
     public Map<String, JSONObject> findAll();
 
     public JSONObject getCutNumber(String number);
+
+    public Map getCutNumbers(String number);
 }

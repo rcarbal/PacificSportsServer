@@ -26,4 +26,9 @@ public class CutJSONServiceImpl implements CutJSONService {
     public JSONObject getCutNumber(String number) {
         return cutDAO.getCutNumber(number);
     }
+
+    @Override
+    public Map getCutNumbers(String number) {
+        return cutDAO.getCutNumbers(number);
+    }
 }

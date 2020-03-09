@@ -22,10 +22,15 @@ public class DatabaseJsonController {
         return cutService.findAll();
     }
 
-    @GetMapping("cuts/{number}")
+    @GetMapping("cuts/cut/{number}")
     public JSONObject getCutNumber(@PathVariable String number){
         JSONObject cutObject = cutService.getCutNumber(number);
         return cutObject;
+    }
+
+    @GetMapping("cuts/cuts/{number}")
+    public Object getAllSimilarCutsToNumber(@PathVariable String number){
+        return cutService.getCutNumbers(number);
     }
 
 }
