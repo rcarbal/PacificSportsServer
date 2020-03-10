@@ -58,50 +58,58 @@
                 <input type="text" class="form-control mb-1" placeholder="$">
             </div>
         </div>
-        <hr>
-        <div>
-            <form th:action="@{order/save}"
-                   th:object="${cut}" method="POST">
-
-                <input type="text" th:field="*{number}"
-                       class="form-control mb-4 col-2" placeholder="Item">
-
-                <input type="text" th:field="*{color}"
-                       class="form-contro lmb-4 col-4" placeholder="Color">
 
 
-                <input type="text" th:field="*{size}"
-                       class="form-control mb-4 col-4" placeholder="Size">
 
 
-                <input type="text" th:field="*{quantity}"
-                       class="form-control mb-4 col-4" placeholder="Quantity">
 
-                <button type="submit" class="btn btn-info col-2">Add</button>
 
-            </form>
-        </div>
 
-        <hr>
-        <a th:href="@{/}">Back to nowhere</a>
 
-        <table border="1">
-            <thead>
+<!--        <hr>-->
+<!--        <div>-->
+<!--            <form th:action="@{order/save}"-->
+<!--                   th:object="${cut}" method="POST">-->
 
-            </thead>
-            <tr>
-                <th>Cut</th>
-                <th>Description</th>
-            </tr>
-            <tbody>
-            <tr th:each="tempCuts: ${theCuts}">
-                <td th:text="${tempCuts}"/>
+<!--                <input type="text" th:field="*{number}"-->
+<!--                       class="form-control mb-4 col-2" placeholder="Item">-->
 
-            </tr>
-            </tbody>
-        </table>
+<!--                <input type="text" th:field="*{color}"-->
+<!--                       class="form-contro lmb-4 col-4" placeholder="Color">-->
 
-    </div>
+
+<!--                <input type="text" th:field="*{size}"-->
+<!--                       class="form-control mb-4 col-4" placeholder="Size">-->
+
+
+<!--                <input type="text" th:field="*{quantity}"-->
+<!--                       class="form-control mb-4 col-4" placeholder="Quantity">-->
+
+<!--                <button type="submit" class="btn btn-info col-2">Add</button>-->
+
+<!--            </form>-->
+<!--        </div>-->
+
+<!--        <hr>-->
+<!--        <a th:href="@{/}">Back to nowhere</a>-->
+
+<!--        <table border="1">-->
+<!--            <thead>-->
+
+<!--            </thead>-->
+<!--            <tr>-->
+<!--                <th>Cut</th>-->
+<!--                <th>Description</th>-->
+<!--            </tr>-->
+<!--            <tbody>-->
+<!--            <tr th:each="tempCuts: ${theCuts}">-->
+<!--                <td th:text="${tempCuts}"/>-->
+
+<!--            </tr>-->
+<!--            </tbody>-->
+<!--        </table>-->
+
+<!--    </div>-->
 
 
 

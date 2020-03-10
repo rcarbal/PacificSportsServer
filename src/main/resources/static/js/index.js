@@ -1,6 +1,7 @@
 let COUNT = 1;
 
 let MAIN_INPUT_GROUP = undefined;
+let CAN_CALL_API = true;
 
 let focusedNode = undefined;
 let parentOfFocusedNode = undefined;
@@ -21,7 +22,7 @@ let priceElement = undefined;
 enterPressed();
 
 
-function enterPressed(){
+function enterPressed() {
   let inputGroup = document.getElementById("main-input-group");
 
   inputGroup.addEventListener("keyup", (data) => {
@@ -31,109 +32,120 @@ function enterPressed(){
       event.preventDefault();
       // Trigger the button element with a click
       console.log("Enter Key Pressed");
-    
+
 
       addNewInputToInputGroup();
-  
-    }else {
 
-     
-      focusedNode = data.srcElement;
-      parentOfFocusedNode = data.srcElement.parentNode;
+    } else {
 
-      MAIN_INPUT_GROUP = parentOfFocusedNode.parentNode;
+      if (CAN_CALL_API) {
 
-     colorsInput = MAIN_INPUT_GROUP.childNodes[5].childNodes[1];
-     colorsPreview = MAIN_INPUT_GROUP.childNodes[5].childNodes[3];
+        CAN_CALL_API = false;
 
-     console.log("INPUT");
-     console.log(colorsPreview);
+        focusedNode = data.srcElement;
+        parentOfFocusedNode = data.srcElement.parentNode;
 
+        MAIN_INPUT_GROUP = parentOfFocusedNode.parentNode;
 
-      console.log(MAIN_INPUT_GROUP);
+        colorsInput = MAIN_INPUT_GROUP.childNodes[5].childNodes[1];
+        colorsPreview = MAIN_INPUT_GROUP.childNodes[5].childNodes[3];
 
-      userQueriedValue = focusedNode.value;
-      previewOfCut = parentOfFocusedNode.childNodes[3];
+        console.log("CALLING API");
+        console.log(colorsPreview);
 
 
-      if (previewOfCut.hasChildNodes()){
+        console.log(MAIN_INPUT_GROUP);
+
+        userQueriedValue = focusedNode.value;
+        previewOfCut = parentOfFocusedNode.childNodes[3];
+
+
+        if (previewOfCut.hasChildNodes()) {
           previewOfCut.innerHTML = "";
+        }
+
+        previewOfCut.style.display = "block";
+
+        let array = userQueriedValue.split(" ");
+
+        var isNum = /^\d+$/.test(array[0]);
+
+        if (isNum) {
+          getCutsStringMatch(array[0]);
+        }
+        else {
+            console.log("No Number to parse");
+            CAN_CALL_API = true;
+        }
+
+      } else {
+        console.log("COULD NOT CALL API");
       }
-
-      previewOfCut.style.display = "block";
-      
-      let array = userQueriedValue.split(" ");
-
-      var isNum = /^\d+$/.test(array[0]);
-
-      if(isNum){
-        getCutsStringMatch(array[0]);
-      }
-       
     }
   });
 }
 
-$("input").focus(function(event){
-//  $(this).css("background-color", "#cccccc");
+$("input").focus(function (event) {
+  //  $(this).css("background-color", "#cccccc");
 
 });
 
 // Get preview selection
 // get child from preview div
-$(document).ready(function() {
-  $('.search-bar-results').on('click', function(event) {
-      // event.stopPropagation();
-      const question = event.target.innerHTML;
+$(document).ready(function () {
+  $('.search-bar-results').on('click', function (event) {
+    // event.stopPropagation();
+    const question = event.target.innerHTML;
 
-       // get search and set search bar
-       const search = document.getElementById('searchInput');
-       focusedNode.value = question;
-       previewOfCut.style.display = "none";
+    // get search and set search bar
+    const search = document.getElementById('searchInput');
+    focusedNode.value = question;
+    previewOfCut.style.display = "none";
 
-       // call server to get response
-//       if (question.split(" ").length){
-//           document.getElementById("searchForm").submit();
-//       }
+    // call server to get response
+    //       if (question.split(" ").length){
+    //           document.getElementById("searchForm").submit();
+    //       }
   });
 });
 
 
-function testServer(){
+function testServer() {
   console.log("Calling server for test");
-  axios.get("/test").then((response)=>{
+  axios.get("/test").then((response) => {
 
 
   });
 }
 
-function getCutsStringMatch(string){
-  axios.get("json/cuts/cuts/" + string).then((response)=>{
+function getCutsStringMatch(string) {
+  axios.get("json/cuts/cuts/" + string).then((response) => {
     responseData = response.data
     return response.data;
   })
-  .then(addResponseToPreview);
+    .then(addResponseToPreview);
 }
 
-function addResponseToPreview(response){
-    // append to preview
-    for (var property in response) {
-      if (response.hasOwnProperty(property)) {
-        let completeString = property + " " + response[property]["description"];
-        
-        let addToPreview = document.createElement("div");
-        addToPreview.innerHTML = completeString;
-         previewOfCut.appendChild(addToPreview);
-      }
+function addResponseToPreview(response) {
+  // append to preview
+  for (var property in response) {
+    if (response.hasOwnProperty(property)) {
+      let completeString = property + " " + response[property]["description"];
+
+      let addToPreview = document.createElement("div");
+      addToPreview.innerHTML = completeString;
+      previewOfCut.appendChild(addToPreview);
     }
+  }
+  CAN_CALL_API = true;
 
 }
 
-function addNewInputToInputGroup(){
+function addNewInputToInputGroup() {
 
   // get main input group
   let inputGroupContainer = document.getElementById("main-input-group");
-  
+
   let inputGroup = document.createElement("div");
   inputGroup.classList.add("input-group");
 
@@ -141,7 +153,7 @@ function addNewInputToInputGroup(){
   let prependDiv = document.createElement("div");
   let span = document.createElement("span");
 
-    //prepend gets the span
+  //prepend gets the span
   prependDiv.classList.add("input-group-prepend");
   prependDiv.classList.add("mb-1");
   span.classList.add("input-group-text");
@@ -185,7 +197,7 @@ function addNewInputToInputGroup(){
   quantityInput.classList.add("mb-1");
   quantityInput.setAttribute("type", "text");
   quantityInput.placeholder = "size"
-  
+
 
   //price
   let priceInput = document.createElement("input");
@@ -193,7 +205,7 @@ function addNewInputToInputGroup(){
   priceInput.classList.add("mb-1");
   priceInput.setAttribute("type", "text");
   priceInput.placeholder = "$"
-  
+
 
 
 
@@ -201,6 +213,6 @@ function addNewInputToInputGroup(){
   inputGroup.appendChild(colorInput);
   inputGroup.appendChild(quantityInput);
   inputGroup.appendChild(priceInput);
-  
+
   inputGroupContainer.appendChild(inputGroup);
 }
