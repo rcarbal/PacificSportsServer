@@ -1,4 +1,4 @@
- [
+[
     {
       "number": 1210,
       "description": "Mens 22/1 Crew SS",
@@ -112,7 +112,140 @@
        "Khaki HTR",
        "Lavender HTR",
        "Light Blue HTR",
-       "Mango HTR"
+       "Mango HTR",
+       "Mocha HTR",
+       "Navy HTR",
+       "Neon Mint HTR",
+       "Neon Peach HTR",
+       "Neon Pink HTR",
+       "Neon Purple HTR",
+       "Neon Sky Blue HTR",
+       "Neon Yellow HTR",
+       "Plum HTR",
+       "Red HTR",
+       "Royal HTR",
+       "Salmon HTR",
+       "Sea Blue HTR",
+       "Topaz HTR",
+       "Turquoise HTR",
+       "White HTR",
+       "Lemon HTR"
      ]
-   }
-  ]
+   },
+  {
+    "number": 1262,
+    "description": "Mens 22/1 HTR LS",
+    "colors": [
+      "Charcoal HTR",
+      "HTR Grey",
+      "Excalibur HTR",
+      "Forest HTR",
+      "Mocha HTR",
+      "Navy HTR",
+      "Royal HTR",
+      "Khaki HTR",
+      "Lavender HTR",
+      "Mango HTR",
+      "Neon Peach HTR",
+      "Neon Purple HTR",
+      "Topaz HTR",
+      "Sea Blue HTR",
+      "Turquoise HTR"
+    ]
+  },
+  {
+    "number": 1264,
+    "description": "Mens 22/1 HTR Tank top",
+    "colors": [
+      "HTR Grey",
+      "Charcoal HTR",
+      "Lavender HTR",
+      "Neon Purple HTR",
+      "Neon Peach HTR",
+      "Honeydew HTR",
+      "Turquoise HTR",
+      "Topaz HTR",
+      "Neon Sky Blue HTR",
+      "Neon Pink HTR",
+      "Mango HTR",
+      "Neon Mint HTR",
+      "Neon Yellow HTR"
+    ]
+  },
+  {
+    "number": 1280,
+    "description": "Mens 22/1 CPRS Crew SS",
+    "colors": [
+      "HTR Grey",
+      "Black",
+      "White",
+      "Red",
+      "Royal",
+      "Navy",
+      "Charcoal",
+      "Rose Quartz",
+      "Celadon",
+      "Burgundy"
+    ]
+  },
+  {
+    "number": 1311,
+    "description": "Mens 30/1 V-neck SS",
+    "colors": [
+      "Black",
+      "Light Blue",
+      "White"
+    ]
+  },
+
+  {
+    "number": 1314,
+    "description": "Mens 30/1 Tank top",
+    "colors": [
+      "Black",
+      "White",
+      "Charcoal",
+      "Dark Navy",
+      "Royal",
+      "Turquoise",
+      "Putty",
+      "Gold",
+      "Red"
+    ]
+  },
+  {
+    "number": 1315,
+    "description": "Mens 30/1 SS",
+    "colors": [
+      "Rose Quartz",
+      "Celadon",
+      "Aqua Blue",
+      "Black",
+      "Charcoal",
+      "Cream",
+      "Dark Navy",
+      "Gold",
+      "Grape",
+      "Ice Vanilla",
+      "Kelly Green",
+      "Lemonade",
+      "Maroon",
+      "Strawberry",
+      "Red Clay",
+      "Pomegranate",
+      "Light Blue",
+      "Light Navy",
+      "Putty",
+      "Red",
+      "Royal",
+      "Silver",
+      "Sky Diver",
+      "Shamrock",
+      "Turquoise",
+      "Bright Yellow",
+      "White",
+      "Cardinal",
+      "Mustard"
+    ]
+  }
+]

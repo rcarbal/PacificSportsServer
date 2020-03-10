@@ -1,9 +1,9 @@
 let COUNT = 1;
-let tempNode = null;
-let tempParent = null;
-let userQuery = null;
-let responseData = null;
-let preview = null;
+let tempNode = undefined;
+let tempParent = undefined;
+let userQuery = undefined;
+let responseData = undefined;
+let preview = undefined;
 
 enterPressed();
 
@@ -23,16 +23,19 @@ function enterPressed(){
       addNewInputToInputGroup();
   
     }else {
+
      
       tempNode = data.srcElement;
       tempParent = data.srcElement.parentNode;
       userQuery = tempNode.value;
       preview = tempParent.childNodes[3];
 
+
       if (preview.hasChildNodes()){
           preview.innerHTML = "";
       }
 
+      preview.style.display = "block";
       
       let array = userQuery.split(" ");
 
@@ -45,6 +48,28 @@ function enterPressed(){
     }
   });
 }
+
+// Get preview selection
+// get child from preview div
+$(document).ready(function() {
+  $('.search-bar-results').on('click', function(event) {
+      // event.stopPropagation();
+      const question = event.target.innerHTML;
+      console.log(question);
+
+       // get search and set search bar
+       const search = document.getElementById('searchInput');
+       tempNode.value = question;
+
+       console.log(preview);
+       preview.style.display = "none";
+
+       // call server to get response
+//       if (question.split(" ").length){
+//           document.getElementById("searchForm").submit();
+//       }
+  });
+});
 
 
 function testServer(){
