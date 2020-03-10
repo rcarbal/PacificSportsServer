@@ -1,9 +1,22 @@
 let COUNT = 1;
-let tempNode = undefined;
-let tempParent = undefined;
-let userQuery = undefined;
+
+let MAIN_INPUT_GROUP = undefined;
+
+let focusedNode = undefined;
+let parentOfFocusedNode = undefined;
+let userQueriedValue = undefined;
 let responseData = undefined;
-let preview = undefined;
+let previewOfCut = undefined;
+
+let colorsInput = undefined;
+let colorsPreview = undefined;
+
+let sizeInput = undefined;
+let sizePreview = undefined;
+
+let priceElement = undefined;
+
+
 
 enterPressed();
 
@@ -25,19 +38,31 @@ function enterPressed(){
     }else {
 
      
-      tempNode = data.srcElement;
-      tempParent = data.srcElement.parentNode;
-      userQuery = tempNode.value;
-      preview = tempParent.childNodes[3];
+      focusedNode = data.srcElement;
+      parentOfFocusedNode = data.srcElement.parentNode;
+
+      MAIN_INPUT_GROUP = parentOfFocusedNode.parentNode;
+
+     colorsInput = MAIN_INPUT_GROUP.childNodes[5].childNodes[1];
+     colorsPreview = MAIN_INPUT_GROUP.childNodes[5].childNodes[3];
+
+     console.log("INPUT");
+     console.log(colorsPreview);
 
 
-      if (preview.hasChildNodes()){
-          preview.innerHTML = "";
+      console.log(MAIN_INPUT_GROUP);
+
+      userQueriedValue = focusedNode.value;
+      previewOfCut = parentOfFocusedNode.childNodes[3];
+
+
+      if (previewOfCut.hasChildNodes()){
+          previewOfCut.innerHTML = "";
       }
 
-      preview.style.display = "block";
+      previewOfCut.style.display = "block";
       
-      let array = userQuery.split(" ");
+      let array = userQueriedValue.split(" ");
 
       var isNum = /^\d+$/.test(array[0]);
 
@@ -49,20 +74,22 @@ function enterPressed(){
   });
 }
 
+$("input").focus(function(event){
+//  $(this).css("background-color", "#cccccc");
+
+});
+
 // Get preview selection
 // get child from preview div
 $(document).ready(function() {
   $('.search-bar-results').on('click', function(event) {
       // event.stopPropagation();
       const question = event.target.innerHTML;
-      console.log(question);
 
        // get search and set search bar
        const search = document.getElementById('searchInput');
-       tempNode.value = question;
-
-       console.log(preview);
-       preview.style.display = "none";
+       focusedNode.value = question;
+       previewOfCut.style.display = "none";
 
        // call server to get response
 //       if (question.split(" ").length){
@@ -96,7 +123,7 @@ function addResponseToPreview(response){
         
         let addToPreview = document.createElement("div");
         addToPreview.innerHTML = completeString;
-         preview.appendChild(addToPreview);
+         previewOfCut.appendChild(addToPreview);
       }
     }
 
