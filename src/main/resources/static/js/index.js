@@ -45,10 +45,16 @@ function enterPressed() {
 
         focusedNode = data.srcElement;
         parentOfFocusedNode = data.srcElement.parentNode;
+        console.log("parent of input");
+        console.log(parentOfFocusedNode)
+
 
         MAIN_INPUT_GROUP = parentOfFocusedNode.parentNode;
+        console.log("parent of parents input")
+        console.log(MAIN_INPUT_GROUP);
 
         colorsInput = MAIN_INPUT_GROUP.childNodes[5].childNodes[1];
+        console.log(colorsInput);
         colorsPreview = MAIN_INPUT_GROUP.childNodes[5].childNodes[3];
 
         userQueriedValue = focusedNode.value;
@@ -82,12 +88,15 @@ function enterPressed() {
 $("input").focus(function (event) {
   //  $(this).css("background-color", "#cccccc");
 
+  console.log("focusing");
+  focusedNode = event.currentTarget;
+
 });
 
 // Get preview selection
 // get child from preview div
 $(document).ready(function () {
-  $('.search-bar-results').on('click', function (event) {
+  $('.item-preview').on('click', function (event) {
     // event.stopPropagation();
     const question = event.target.innerHTML;
 
@@ -103,10 +112,19 @@ $(document).ready(function () {
     focusedNode.value = question;
     previewOfCut.style.display = "none";
 
-    // call server to get response
-    //       if (question.split(" ").length){
-    //           document.getElementById("searchForm").submit();
-    //       }
+    focusedNode = colorsInput;
+  });
+});
+
+
+$(document).ready(function () {
+  $('.color-preview').on('click', function (event) {
+    // event.stopPropagation();
+    const selectedColor = event.target.innerHTML;
+
+    // focusedNode.value = question;
+    colorsPreview.style.display = "none";
+    focusedNode.value = selectedColor;
   });
 });
 
@@ -134,6 +152,7 @@ function addResponseToPreview(response) {
       let completeString = property + " " + response[property]["description"];
 
       let addToPreview = document.createElement("div");
+      addToPreview.classList.add("item-preview-item");
       addToPreview.innerHTML = completeString;
       previewOfCut.appendChild(addToPreview);
     }
@@ -220,8 +239,6 @@ function addNewInputToInputGroup() {
 
 function setupColorSection(){
     console.log("Setting up color section");
-    console.log(responseData);
-    console.log(colorsPreview);
 
     // setup the colors preview div
     console.log("looping through colors");
