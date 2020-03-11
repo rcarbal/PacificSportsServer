@@ -1,12 +1,13 @@
-let COUNT = 1;
+let COUNT_FOR_NUMBER_OF_ROWS = 1;
 
 let MAIN_INPUT_GROUP = undefined;
 let CAN_CALL_API = true;
+let responseData = undefined;
+let currentSelectedItem = undefined;
 
 let focusedNode = undefined;
 let parentOfFocusedNode = undefined;
 let userQueriedValue = undefined;
-let responseData = undefined;
 let previewOfCut = undefined;
 
 let colorsInput = undefined;
@@ -50,15 +51,8 @@ function enterPressed() {
         colorsInput = MAIN_INPUT_GROUP.childNodes[5].childNodes[1];
         colorsPreview = MAIN_INPUT_GROUP.childNodes[5].childNodes[3];
 
-        console.log("CALLING API");
-        console.log(colorsPreview);
-
-
-        console.log(MAIN_INPUT_GROUP);
-
         userQueriedValue = focusedNode.value;
         previewOfCut = parentOfFocusedNode.childNodes[3];
-
 
         if (previewOfCut.hasChildNodes()) {
           previewOfCut.innerHTML = "";
@@ -96,6 +90,13 @@ $(document).ready(function () {
   $('.search-bar-results').on('click', function (event) {
     // event.stopPropagation();
     const question = event.target.innerHTML;
+
+    const splitQuestion = question.split(" ");
+    currentSelectedItem = responseData[splitQuestion[0]]
+
+    setupColorSection();
+
+
 
     // get search and set search bar
     const search = document.getElementById('searchInput');
@@ -158,8 +159,8 @@ function addNewInputToInputGroup() {
   prependDiv.classList.add("mb-1");
   span.classList.add("input-group-text");
 
-  COUNT++;
-  span.innerHTML = COUNT;
+  COUNT_FOR_NUMBER_OF_ROWS++;
+  span.innerHTML = COUNT_FOR_NUMBER_OF_ROWS;
 
   prependDiv.appendChild(span);
 
@@ -216,3 +217,20 @@ function addNewInputToInputGroup() {
 
   inputGroupContainer.appendChild(inputGroup);
 }
+
+function setupColorSection(){
+    console.log("Setting up color section");
+    console.log(responseData);
+    console.log(colorsPreview);
+
+    // setup the colors preview div
+    console.log("looping through colors");
+    currentSelectedItem.colors.forEach((color) => {
+
+        let colorDiv = document.createElement("div");
+        colorDiv.innerHTML = color;
+        colorsPreview.appendChild(colorDiv);
+    });
+
+    colorsPreview.style.display = "block";
+ }
